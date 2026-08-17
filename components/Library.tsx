@@ -93,8 +93,8 @@ function LibraryRow({ item }: { item: LibraryItem }) {
       {/* Title + author + note + (maybe) embedded video */}
       <div className="col-span-12 md:col-span-7">
         <h3 className="font-display text-3xl font-normal leading-[1.1] tracking-tight md:text-4xl">
-          {item.link && !canEmbed ? (
-            <a
+          {item.link ? (
+            
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
