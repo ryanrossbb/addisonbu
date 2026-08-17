@@ -22,7 +22,7 @@ export default async function Home() {
         <Quotes />
         <Library items={library} />
         <Lessons />
-        <Vault />
+        {/* <Vault /> */}
         <Footer />
       </main>
     </Gate>
