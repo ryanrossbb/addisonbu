@@ -6,13 +6,12 @@ import Library from "@/components/Library";
 import Lessons from "@/components/Lessons";
 import Vault from "@/components/Vault";
 import Footer from "@/components/Footer";
-import { getLibrary } from "@/lib/airtable";
+import { getLibrary, getLessons } from "@/lib/airtable";
 
-// Revalidate the page every 60 seconds. New Airtable items show up within a minute.
 export const revalidate = 60;
 
 export default async function Home() {
-  const library = await getLibrary();
+  const [library, lessons] = await Promise.all([getLibrary(), getLessons()]);
 
   return (
     <Gate>
@@ -21,7 +20,7 @@ export default async function Home() {
         <Letter />
         <Quotes />
         <Library items={library} />
-        <Lessons />
+        <Lessons items={lessons} />
         {/* <Vault /> */}
         <Footer />
       </main>
