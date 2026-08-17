@@ -5,7 +5,7 @@ import Quotes from "@/components/Quotes";
 import Library from "@/components/Library";
 import Lessons from "@/components/Lessons";
 import Vault from "@/components/Vault";
-import Footer from "@/components/Footer";
+// import Footer from "@/components/Footer";
 import { getLibrary, getLessons } from "@/lib/airtable";
 
 export const revalidate = 60;
@@ -22,7 +22,7 @@ export default async function Home() {
         <Library items={library} />
         <Lessons items={lessons} />
         {/* <Vault /> */}
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </Gate>
   );
