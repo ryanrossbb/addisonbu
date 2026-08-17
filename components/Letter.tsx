@@ -65,7 +65,6 @@ export default function Letter() {
                 { id: "quotes", label: "Quotes & ideas", n: "01" },
                 { id: "library", label: "Books, films, music", n: "02" },
                 { id: "lessons", label: "Things I've learned", n: "03" },
-                { id: "vault", label: "Where the documents live", n: "04" },
               ].map((item) => (
                 <li key={item.id} className="bg-base">
                   <a
