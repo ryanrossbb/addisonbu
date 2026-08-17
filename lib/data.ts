@@ -38,25 +38,15 @@ export type VaultEntry = {
 export const LETTER = {
   greeting: "Dear Addison —",
   paragraphs: [
-    "You're moving out of your house and into a new environment."
-    "I've put together some ideas to help you make the most of the next 4 years."
-    "You have huge potential, and my goal is for you to harness that into something positive for the world."
-    "I will continue to update this - I'll let you know when I do."
-    
-    "First, very quickly, the point of college, in my opinion is mostly about 3 things."
-    
-    "Those 3 things aren't making great grades, winning a competition, or meeting your future wife. "
-    
-    "Instead, college is the time where you build systems composed of the following things you must MANAGE (do things using a skill) :
-
-    " 1) time2) energy3) mood "
-    
-    "Time management is the most important. Elon Musk, Jeff Bezos, Bill Gates, your mom, and I all have the same 24 hours.  The actions you take in those 24 hours will separate you from others."
-    
-    "Energy management will help you with time management. If you're tired, it affects how much you can get done, if you don't know how to manage it. The opposite is also true."
-    
-    "Your mood will affect your energy management and your time management. Find out the things that make you happy, sad, frustrated, etc. Those are moods, and they affect how much you can get done if you don't know how to manage them. ",
-    ,
+    "You're moving out of your house and into a new environment. This can be exciting and daunting all at once. It is easy to let college \"happen to you,\" rather than you happening to college.",
+    "Plus, these few years will go by VERY quickly, so I've put together some ideas to help you make the most of the next 4 years.",
+    "You have huge potential, and my goal is for you to harness that into something positive for the world.",
+    "I will continue to update this — I'll let you know when I do.",
+    "First, very quickly, the point of college, in my opinion, is mostly about three things. Those three things aren't making great grades, winning a competition, or meeting your future wife.",
+    "Instead, college is the time when you build systems around three things you must manage — time, energy, and mood.",
+    "Time is the most important. Elon Musk, Jeff Bezos, Bill Gates, your mom, and I all have the same twenty-four hours in a day. The actions you take inside those hours are what separate you from everyone else.",
+    "Energy is what makes time management possible. If you're exhausted, it doesn't matter how well you've scheduled your day — you won't do the work. Learn what recharges you and what drains you. The opposite is also true: the right energy makes even a bad schedule survivable.",
+    "Mood shapes both of the above. Notice what makes you happy, frustrated, anxious, calm. Those are moods, and if you don't learn to manage them, they'll manage your time and your energy for you.",
   ],
   signoff: "— Uncle Ryan",
 };
