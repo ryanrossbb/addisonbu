@@ -1,0 +1,9 @@
+# Netlify configuration for Next.js 15
+# Place this file at the root of the project (same level as package.json)
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

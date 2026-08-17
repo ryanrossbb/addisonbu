@@ -1,0 +1,193 @@
+@import "tailwindcss";
+
+@theme {
+  /* Editorial dark palette — deep midnight with warm parchment for light mode */
+  --color-ink-50: #f7f5ef;
+  --color-ink-100: #ede9dd;
+  --color-ink-200: #d6d0bd;
+  --color-ink-300: #9d9785;
+  --color-ink-400: #5d5847;
+  --color-ink-500: #2c2a23;
+  --color-ink-600: #1a1916;
+  --color-ink-700: #14130f;
+  --color-ink-800: #0d0d0a;
+  --color-ink-900: #060604;
+
+  --color-midnight-50: #e8edf7;
+  --color-midnight-100: #c5cee5;
+  --color-midnight-200: #8c9bc4;
+  --color-midnight-300: #4d5d8d;
+  --color-midnight-400: #2a3760;
+  --color-midnight-500: #1a2342;
+  --color-midnight-600: #131a32;
+  --color-midnight-700: #0d1226;
+  --color-midnight-800: #080b1a;
+  --color-midnight-900: #04060f;
+
+  /* Brass accent — restrained, financial-professional */
+  --color-brass-300: #e6cf91;
+  --color-brass-400: #d4b76b;
+  --color-brass-500: #b89947;
+  --color-brass-600: #957935;
+  --color-brass-700: #6e5826;
+
+  --font-display: var(--font-fraunces), "Iowan Old Style", "Apple Garamond",
+    "Baskerville", "Times New Roman", "Droid Serif", "Times", "Source Serif Pro",
+    serif;
+  --font-sans: var(--font-geist), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-mono: var(--font-geist-mono), "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* Theme variables — switch via .light class on <html> */
+:root {
+  /* Default = dark */
+  --bg: var(--color-midnight-900);
+  --bg-elevated: var(--color-midnight-800);
+  --bg-card: rgba(255, 255, 255, 0.02);
+  --fg: var(--color-ink-50);
+  --fg-muted: var(--color-ink-300);
+  --fg-subtle: rgba(247, 245, 239, 0.45);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --accent: var(--color-brass-400);
+  --accent-soft: rgba(212, 183, 107, 0.12);
+  --grain-opacity: 0.04;
+}
+
+html.light {
+  --bg: var(--color-ink-50);
+  --bg-elevated: #ffffff;
+  --bg-card: rgba(0, 0, 0, 0.015);
+  --fg: var(--color-ink-700);
+  --fg-muted: var(--color-ink-400);
+  --fg-subtle: rgba(20, 19, 15, 0.45);
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.18);
+  --accent: var(--color-brass-600);
+  --accent-soft: rgba(149, 121, 53, 0.08);
+  --grain-opacity: 0.025;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    background: var(--bg);
+    color-scheme: dark;
+  }
+  html.light {
+    color-scheme: light;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Subtle film grain across the whole page */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.4 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    mix-blend-mode: overlay;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--bg);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+    font-feature-settings: "ss01", "ss02";
+    letter-spacing: -0.02em;
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .bg-base { background-color: var(--bg); }
+  .bg-elevated { background-color: var(--bg-elevated); }
+  .bg-card { background-color: var(--bg-card); }
+  .text-fg { color: var(--fg); }
+  .text-muted { color: var(--fg-muted); }
+  .text-subtle { color: var(--fg-subtle); }
+  .text-accent { color: var(--accent); }
+  .bg-accent-soft { background-color: var(--accent-soft); }
+  .border-default { border-color: var(--border); }
+  .border-strong { border-color: var(--border-strong); }
+
+  /* The signature thin rule used as a section divider on the reference site */
+  .rule {
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Hairline grid background — very subtle */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, var(--border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+    background-size: 96px 96px;
+    background-position: -1px -1px;
+  }
+
+  /* Underline that draws on hover */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 320ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+
+  /* Used for the giant section labels and stat counters */
+  .counter-tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum", "ss01";
+  }
+
+  /* Reveal animation for elements on load */
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .rise {
+    animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  /* Marquee tape for stats */
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .ticker {
+    animation: ticker 60s linear infinite;
+  }
+
+  /* Smooth scroll for the whole page (used by anchor nav) */
+  html { scroll-behavior: smooth; }
+}
