@@ -5,7 +5,7 @@ import { type LibraryItem } from "@/lib/data";
 import { getEmbedUrl } from "@/lib/airtable";
 import SectionHeading from "./SectionHeading";
 
-const KINDS = ["all", "book", "film", "video", "essay", "album", "podcast"] as const;
+const KINDS = ["all", "book", "film", "video", "essay", "podcast"] as const;
 type Kind = (typeof KINDS)[number];
 
 const KIND_LABEL: Record<string, string> = {
@@ -13,7 +13,6 @@ const KIND_LABEL: Record<string, string> = {
   film: "Film",
   video: "Video",
   essay: "Essay",
-  album: "Album",
   podcast: "Podcast",
 };
 
