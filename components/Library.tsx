@@ -90,12 +90,7 @@ function LibraryRow({ item }: { item: LibraryItem }) {
       <div className="col-span-12 md:col-span-7">
         <h3 className="font-display text-3xl font-normal leading-[1.1] tracking-tight md:text-4xl">
           {item.link ? (
-            
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-underline"
-            >
+            <a href={item.link} target="_blank" rel="noopener noreferrer" className="link-underline">
               {item.title}
             </a>
           ) : (
@@ -120,17 +115,11 @@ function LibraryRow({ item }: { item: LibraryItem }) {
                 onClick={() => setPlaying(true)}
                 className="group/play flex items-center gap-3 rounded-full border border-strong px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.2em] transition-all hover:bg-accent-soft hover:text-accent"
               >
-                <span
-                  className="flex h-2 w-2 rounded-full"
-                  style={{ background: "var(--accent)" }}
-                />
+                <span className="flex h-2 w-2 rounded-full" style={{ background: "var(--accent)" }} />
                 Watch inline
               </button>
             ) : (
-              <div
-                className="relative w-full overflow-hidden border border-default"
-                style={{ aspectRatio: "16 / 9", background: "#000" }}
-              >
+              <div className="relative w-full overflow-hidden border border-default" style={{ aspectRatio: "16 / 9", background: "#000" }}>
                 <iframe
                   src={`${embedUrl}${embedUrl.includes("?") ? "&" : "?"}autoplay=1`}
                   title={item.title}
@@ -146,18 +135,8 @@ function LibraryRow({ item }: { item: LibraryItem }) {
 
         {item.link && !canEmbed && (
           <div className="mt-6">
-            
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-underline inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-fg"
-            >
-              {item.kind === "book" || item.kind === "essay"
-                ? "Read"
-                : item.kind === "podcast"
-                  ? "Listen"
-                  : "Visit"}{" "}
-              ↗
+            <a href={item.link} target="_blank" rel="noopener noreferrer" className="link-underline inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-fg">
+              {item.kind === "book" || item.kind === "essay" ? "Read" : item.kind === "podcast" ? "Listen" : "Visit"} ↗
             </a>
           </div>
         )}
