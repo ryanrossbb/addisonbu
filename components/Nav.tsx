@@ -7,7 +7,6 @@ const SECTIONS = [
   { id: "quotes", label: "Quotes" },
   { id: "library", label: "Library" },
   { id: "lessons", label: "Lessons" },
-  { id: "vault", label: "Vault" },
 ];
 
 export default function Nav() {
