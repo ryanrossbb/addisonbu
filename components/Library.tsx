@@ -34,7 +34,6 @@ export default function Library({ items: allItems }: { items: LibraryItem[] }) {
           description="What changed how I see things. The note under each one is when to return to it — most of these are not one-and-done. Videos play inline; everything else opens in a new tab."
         />
 
-        {/* Kind filter */}
         <div className="mt-12 flex flex-wrap gap-2">
           {KINDS.map((k) => (
             <button
@@ -51,7 +50,6 @@ export default function Library({ items: allItems }: { items: LibraryItem[] }) {
           ))}
         </div>
 
-        {/* The list */}
         <div className="mt-16">
           {items.map((item, i) => (
             <LibraryRow key={`${item.title}-${i}`} item={item} />
@@ -78,7 +76,6 @@ function LibraryRow({ item }: { item: LibraryItem }) {
 
   return (
     <article className="group grid grid-cols-12 gap-4 border-t border-default py-12 transition-colors hover:bg-card md:gap-6 md:py-16">
-      {/* Kind + year column */}
       <div className="col-span-12 flex items-baseline gap-3 md:col-span-2 md:flex-col md:items-start md:gap-2">
         <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-accent">
           {KIND_LABEL[item.kind] || item.kind}
@@ -90,7 +87,6 @@ function LibraryRow({ item }: { item: LibraryItem }) {
         )}
       </div>
 
-      {/* Title + author + note + (maybe) embedded video */}
       <div className="col-span-12 md:col-span-7">
         <h3 className="font-display text-3xl font-normal leading-[1.1] tracking-tight md:text-4xl">
           {item.link ? (
@@ -117,7 +113,6 @@ function LibraryRow({ item }: { item: LibraryItem }) {
           </p>
         )}
 
-        {/* Video controls + inline embed */}
         {canEmbed && (
           <div className="mt-6">
             {!playing ? (
@@ -130,20 +125,6 @@ function LibraryRow({ item }: { item: LibraryItem }) {
                   style={{ background: "var(--accent)" }}
                 />
                 Watch inline
-                {item.link && (
-                  <>
-                    <span className="text-subtle">/</span>
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="link-underline text-subtle hover:text-accent"
-                    >
-                      Open ↗
-                    </a>
-                  </>
-                )}
               </button>
             ) : (
               <div
@@ -163,10 +144,9 @@ function LibraryRow({ item }: { item: LibraryItem }) {
           </div>
         )}
 
-        {/* Non-embeddable link */}
         {item.link && !canEmbed && (
           <div className="mt-6">
-            <a
+            
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
@@ -174,7 +154,7 @@ function LibraryRow({ item }: { item: LibraryItem }) {
             >
               {item.kind === "book" || item.kind === "essay"
                 ? "Read"
-                : item.kind === "album" || item.kind === "podcast"
+                : item.kind === "podcast"
                   ? "Listen"
                   : "Visit"}{" "}
               ↗
@@ -183,19 +163,4 @@ function LibraryRow({ item }: { item: LibraryItem }) {
         )}
       </div>
 
-      {/* "When to return" — set apart, like marginalia */}
       {item.whenToReturn && (
-        <div className="col-span-12 md:col-span-3">
-          <div className="border-l border-default pl-6">
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
-              ※ When
-            </span>
-            <p className="mt-3 font-display text-sm italic leading-relaxed text-fg md:text-base">
-              {item.whenToReturn}
-            </p>
-          </div>
-        </div>
-      )}
-    </article>
-  );
-}
